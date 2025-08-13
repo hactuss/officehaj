@@ -352,7 +352,7 @@
         <a href="./obs-overlay">OBS overlay</a>
     </main>
     <footer>
-        Made with fun by <a href="https://hactuss.vercel.app">hactuss</a>
+        Made with fun by <a href="https://hactuss-website.vercel.app">hactuss</a>
     </footer>
     <div id="settingsmenu">
         <div class="settings-container">
