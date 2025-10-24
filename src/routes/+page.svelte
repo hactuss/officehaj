@@ -1,4 +1,6 @@
 <script lang="js">
+    import { onMount } from "svelte";
+
     const options = {
         weekday: "short",
         hours: "2-digit",
@@ -16,12 +18,14 @@
     const timezonech = "Asia/Shanghai";
     const timezoneen = "Europe/London";
 
-    let timeca = $state(
-        DateVar.toLocaleTimeString(undefined, {
-            timeZone: timezoneca,
-            options: options,
-        }),
-    );
+    let timeca = DateVar.toLocaleTimeString(undefined, {
+        timeZone: timezoneca,
+        options: options,
+    });
+
+    let re = setInterval(() => {
+        console.log((timeca = DateVar.getSeconds()));
+    }, 1000);
 </script>
 
 <main class="bg-[rgb(33, 33, 33)]">
@@ -352,7 +356,8 @@
         <a href="./obs-overlay">OBS overlay</a>
     </main>
     <footer>
-        Made with fun by <a href="https://hactuss-website.vercel.app">hactuss</a>
+        Made with fun by <a href="https://hactuss-website.vercel.app">hactuss</a
+        >
     </footer>
     <div id="settingsmenu">
         <div class="settings-container">
