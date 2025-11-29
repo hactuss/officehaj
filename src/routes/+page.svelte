@@ -20,7 +20,8 @@
         timeZone: timezoneca,
         options: options,
     });
-    let ms = 1000000;
+
+    let ms = 1000;
     let newtime = "";
     let timede = $state(0);
     $effect(() => {
@@ -39,51 +40,6 @@
 </script>
 
 <main class="bg-[rgb(33, 33, 33)]">
-    <nav>
-        <div class="nav-sector">
-            <svg
-                class="nav-icons"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-            >
-                <path
-                    d="M14 2h-4v2H8v2H6v2H4v2H2v2h2v10h7v-6h2v6h7V12h2v-2h-2V8h-2V6h-2V4h-2V2zm0 2v2h2v2h2v2h2v2h-2v8h-3v-6H9v6H6v-8H4v-2h2V8h2V6h2V4h4z"
-                    fill="currentColor"
-                />
-            </svg>
-            <a href="/" target="_top">Back to home</a>
-        </div>
-        <div class="nav-sector">
-            <svg
-                class="nav-icons"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-            >
-                <path
-                    fill="currentColor"
-                    d="M5 2h4v2H7v2H5V2Zm0 10H3V6h2v6Zm2 2H5v-2h2v2Zm2 2v-2H7v2H3v-2H1v2h2v2h4v4h2v-4h2v-2H9Zm0 0v2H7v-2h2Zm6-12v2H9V4h6Zm4 2h-2V4h-2V2h4v4Zm0 6V6h2v6h-2Zm-2 2v-2h2v2h-2Zm-2 2v-2h2v2h-2Zm0 2h-2v-2h2v2Zm0 0h2v4h-2v-4Z"
-                /></svg
-            >
-            <a
-                href="https://github.com/hactuss/hactuss.github.io/tree/main/pages/office"
-                >source code</a
-            >
-        </div>
-        <div class="nav-sector">
-            <svg
-                class="nav-icons"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-            >
-                <path
-                    d="M17 4h2v10h-2V4zm0 12h-2v2h2v2h2v-2h2v-2h-4zm-4-6h-2v10h2V10zm-8 2H3v2h2v6h2v-6h2v-2H5zm8-8h-2v2H9v2h6V6h-2V4zM5 4h2v6H5V4z"
-                    fill="currentColor"
-                />
-            </svg>
-            <a href="/">settings</a>
-        </div>
-    </nav>
     <header id="header" aria-hidden="true">
         <div class="Time Germany">
             <div class="DaylightIndicatorMaster">
@@ -416,20 +372,7 @@
         display: flex;
         justify-content: space-evenly;
     }
-    nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-    .nav-icons {
-        width: 23px;
-        color: wheat;
-    }
-    .nav-sector {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+
     main {
         text-align: center;
         margin-bottom: 2.5%;
@@ -504,37 +447,5 @@
         width: 5%;
         height: 5%;
         font-size: 1.5em;
-    }
-    @media screen and (max-width: 500px) {
-        header {
-            flex-direction: column;
-            margin-top: 10%;
-        }
-        nav {
-            text-align: center;
-        }
-        .nav-sector {
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.05);
-            margin: 5px;
-            padding: 2%;
-            border: solid transparent;
-            border-radius: 10px;
-        }
-        .nav-sector:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            transition: background-color;
-        }
-        .nav-sector:active {
-            background-color: rgba(255, 255, 255, 0.25);
-            transition: background-color;
-        }
-        .Time {
-            background-color: rgba(255, 255, 255, 0.05);
-            margin: 5%;
-            padding: 5%;
-            border: solid transparent;
-            border-radius: 25px;
-        }
     }
 </style>

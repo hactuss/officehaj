@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+:root {
+    background-repeat: no-repeat;
+}
+* {
+    border: solid 1px red;
+}
+h1 {
+    font-size: 3rem;
+    font-family: "Akira Expanded";
+}
+h2 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 1.95rem;
+}
+h4 {
+    font-size: 1.5rem;
+}
+h5 {
+    font-size: 1rem;
+}
+h6 {
+    font-size: 0.75rem;
+}
+p {
+    font-size: 1.25rem;
+}
+a {
+    font-size: 1.25rem;
+    text-decoration: underline;
+    font-size: inherit;
+}
+button {
+    font-size: 1.25rem;
+    padding: 5pt;
+    transition: 10ms ease-in-out;
+    border: solid transparent;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+button:active {
+    transition: 10ms ease-in-out;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+iframe {
+    margin: 50px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.nav-icons {
+    width: 23px;
+    color: wheat;
+}
+.nav-sector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+    header {
+        flex-direction: column;
+        margin-top: 10%;
+    }
+    nav {
+        text-align: center;
+    }
+    .nav-sector {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.05);
+        margin: 5px;
+        padding: 2%;
+        border: solid transparent;
+        border-radius: 10px;
+    }
+    .nav-sector:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        transition: background-color;
+    }
+    .nav-sector:active {
+        background-color: rgba(255, 255, 255, 0.25);
+        transition: background-color;
+    }
+    .Time {
+        background-color: rgba(255, 255, 255, 0.05);
+        margin: 5%;
+        padding: 5%;
+        border: solid transparent;
+        border-radius: 25px;
+    }
+}
