@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Countrycard from '$lib/components/countrycard.svelte';
-
+	console.log("https://en.wikipedia.org/wiki/List_of_UTC_offsets");
 	const flaglist = [
 		'https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg',
 		'https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg',
