@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Countrycard from '$lib/components/countrycard.svelte';
-	console.log("https://en.wikipedia.org/wiki/List_of_UTC_offsets");
+	console.log('https://en.wikipedia.org/wiki/List_of_UTC_offsets');
 	const flaglist = [
 		'https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg',
 		'https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg',
@@ -44,14 +44,7 @@
 		});
 	});*/
 
-	let testdate = $state(
-		DateVar.toLocaleTimeString(undefined, {
-			timeZone: timezonede,
-			hour: '2-digit',
-			minute: '2-digit',
-			second: '2-digit'
-		})
-	);
+	let testdate = $state('');
 	testdate = DateVar.toLocaleTimeString(undefined, {
 		timeZone: timezonede,
 		hour: '2-digit',
@@ -59,10 +52,10 @@
 		second: '2-digit'
 	});
 
-	let utchours = DateVar.getUTCHours();
+	let utchours = $state(DateVar.getUTCHours());
 	let showseconds = $state(false);
 
-	function setUTCTimeold(offset: string, number: number) {
+	function setUTCTimeseconds(offset: string, number: number) {
 		if ((showseconds = true)) {
 			switch (offset) {
 				case '+':
@@ -100,14 +93,13 @@
 	function setUTCTime(offset: string, number: number) {
 		switch (offset) {
 			case '+':
-				return utchours + number + ':' + DateVar.getUTCMinutes();
+				return utchours + number + ':' + DateVar.getUTCMinutes() + DateVar.getUTCSeconds();
 				break;
 			case '-':
 				return utchours - number + ':' + DateVar.getUTCMinutes();
 				break;
 		}
 	}
-
 	const de = setUTCTime('+', 1),
 		jp = setUTCTime('+', 9),
 		en = setUTCTime('+', 0),
