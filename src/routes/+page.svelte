@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Countrycard from '$lib/components/countrycard.svelte';
+
 	console.log('https://en.wikipedia.org/wiki/List_of_UTC_offsets');
 	const flaglist = [
 		'https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg',
@@ -12,14 +13,14 @@
 		'https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg',
 		'https://upload.wikimedia.org/wikipedia/commons/e/ef/Flag_of_Hawaii.svg'
 	];
-	console.log(flaglist.length - 1);
+	console.log('Linklist length:', flaglist.length - 1);
 	const options = {
 		weekday: 'short',
 		hours: '2-digit',
 		minutes: '2-digit',
 		seconds: '2-digit'
 	};
-	let DateVar = new Date();
+
 	// const timezoneClient = Intl.DateTimeFormat().resolvedOptions().timeZone
 	const timezonede = 'Europe/Berlin';
 	const timezonejp = 'Asia/Tokyo';
@@ -44,56 +45,33 @@
 		});
 	});*/
 
-	let testdate = $state('');
-	testdate = DateVar.toLocaleTimeString(undefined, {
-		timeZone: timezonede,
-		hour: '2-digit',
-		minute: '2-digit',
-		second: '2-digit'
-	});
-
-	let utchours = $state(DateVar.getUTCHours());
-	let showseconds = $state(false);
+	const DateVar = new Date();
+	let utchours = $derived(DateVar.getUTCHours());
+	let utcminutes = $derived(DateVar.getUTCSeconds());
+	let testdate = $state(
+		DateVar.toLocaleTimeString(undefined, {
+			timeZone: timezonede,
+			hour: '2-digit',
+			minute: '2-digit',
+			second: '2-digit'
+		})
+	);
 
 	function setUTCTimeseconds(offset: string, number: number) {
-		if ((showseconds = true)) {
-			switch (offset) {
-				case '+':
-					return (
-						utchours +
-						number +
-						':' +
-						DateVar.getUTCMinutes() +
-						':' +
-						DateVar.getUTCSeconds()
-					);
-					break;
-				case '-':
-					return (
-						utchours -
-						number +
-						':' +
-						DateVar.getUTCMinutes() +
-						':' +
-						DateVar.getUTCSeconds()
-					);
-					break;
-			}
-		} else {
-			switch (offset) {
-				case '+':
-					return utchours + number + ':' + DateVar.getUTCMinutes();
-					break;
-				case '-':
-					return utchours - number + ':' + DateVar.getUTCMinutes();
-					break;
-			}
+		switch (offset) {
+			case '+':
+				return utchours + number + ':' + utcminutes + ':' + DateVar.getUTCSeconds();
+				break;
+			case '-':
+				return utchours - number + ':' + utcminutes + ':' + DateVar.getUTCSeconds();
+				break;
 		}
 	}
+
 	function setUTCTime(offset: string, number: number) {
 		switch (offset) {
 			case '+':
-				return utchours + number + ':' + DateVar.getUTCMinutes() + DateVar.getUTCSeconds();
+				return utchours + number + ':' + DateVar.getUTCMinutes();
 				break;
 			case '-':
 				return utchours - number + ':' + DateVar.getUTCMinutes();
@@ -124,7 +102,6 @@
 </main>
 
 <hr />
-<!--<a href="./obs-overlay">OBS overlay</a>-->
 
 <footer>
 	°°° <a href="https://hactuss-website.vercel.app">Made with fun by hactuss</a> °°°
