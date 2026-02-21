@@ -1,114 +1,116 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/typography';
 :root {
-	background-repeat: no-repeat;
+    background-repeat: no-repeat;
 }
+/*
 * {
-}
+    margin: 0;
+    padding: 0;
+    border: 0;
+}*/
 body {
-	padding: 12.6%;
-	padding-top: 0;
-	padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 h1 {
-	font-size: 3rem;
-	font-family: 'Akira Expanded';
+    font-size: 3rem;
+    font-family: "Akira Expanded";
 }
-h2 {
-	font-size: 2rem;
-}
-h3 {
-	font-size: 1.95rem;
-}
-h4 {
-	font-size: 1.5rem;
-}
-h5 {
-	font-size: 1rem;
-}
-h6 {
-	font-size: 0.75rem;
-}
-p {
-	font-size: 1.25rem;
-}
+
 a {
-	font-size: 1.25rem;
-	text-decoration: underline;
-	font-size: inherit;
+    font-size: 1.25rem;
+    text-decoration: underline;
+    font-size: inherit;
+    color: wheat;
 }
 button {
-	font-size: 1.25rem;
-	padding: 5pt;
-	transition: 10ms ease-in-out;
-	border: solid transparent;
-	border-radius: 5px;
-	background-color: rgba(0, 0, 0, 0.1);
+    font-size: 1.25rem;
+    padding: 5pt;
+    transition: 10ms ease-in-out;
+    border: solid transparent;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 button:active {
-	transition: 10ms ease-in-out;
-	background-color: rgba(0, 0, 0, 0.25);
+    transition: 10ms ease-in-out;
+    background-color: rgba(0, 0, 0, 0.25);
 }
 iframe {
-	margin: 50px;
+    margin: 50px;
 }
 hr {
-	opacity: 0.5;
-	margin-left: 1%;
-	margin-right: 1%;
+    opacity: 0.5;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 nav {
-	flex-direction: row;
-	justify-content: space-evenly;
-	margin: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 1%;
+    align-items: center;
 }
 #nav2 {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	color: wheat;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: wheat;
 }
 .nav-icons {
-	width: 23px;
-	color: wheat;
+    width: 23px;
+    color: wheat;
 }
 .nav-sector {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 @media screen and (max-width: 500px) {
-	#MAIN {
-		flex-direction: column;
-		margin-top: 10%;
-	}
-	nav {
-		text-align: center;
-	}
-	.nav-sector {
-		width: 100%;
-		background-color: rgba(255, 255, 255, 0.05);
-		margin: 5px;
-		padding: 2%;
-		border: solid transparent;
-		border-radius: 10px;
-	}
-	.nav-sector:hover {
-		background-color: rgba(255, 255, 255, 0.15);
-		transition: background-color;
-	}
-	.nav-sector:active {
-		background-color: rgba(255, 255, 255, 0.25);
-		transition: background-color;
-	}
-	.Time {
-		background-color: rgba(255, 255, 255, 0.05);
-		margin: 5%;
-		margin-left: 0;
-		margin-right: 0;
-		padding: 5%;
-		border: solid transparent;
-		border-radius: 25px;
-	}
+    #MAIN {
+        flex-direction: column;
+        margin-top: 10%;
+    }
+    nav {
+        text-align: center;
+    }
+    .nav-sector {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.05);
+        margin: 5px;
+        padding: 2%;
+        border: solid transparent;
+        border-radius: 10px;
+    }
+    .nav-sector:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        transition: background-color;
+    }
+    .nav-sector:active {
+        background-color: rgba(255, 255, 255, 0.25);
+        transition: background-color;
+    }
+    .Time {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 2%;
+        border: solid transparent;
+        border-radius: 25px;
+    }
+}
+
+.doggo {
+    animation-name: spin;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
