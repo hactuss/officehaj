@@ -1,20 +1,44 @@
+<!--
+___  ___  ________  ________ _________  ___  ___  ________   ________
+|\  \|\  \|\   __  \|\   ____\\___   ___\\  \|\  \|\   ____\ |\   ____\
+\ \  \\\  \ \  \|\  \ \  \___\|___ \  \_\ \  \\\  \ \  \___|_\ \  \___|_
+\ \   __  \ \   __  \ \  \       \ \  \ \ \  \\\  \ \_____  \\ \_____  \
+ \ \  \ \  \ \  \ \  \ \  \____   \ \  \ \ \  \\\  \|____|\  \\|____|\  \
+  \ \__\ \__\ \__\ \__\ \_______\  \ \__\ \ \_______\____\_\  \ ____\_\  \
+   \|__|\|__|\|__|\|__|\|_______|   \|__|  \|_______|\_________\\_________\
+                                                    \|_________\|_________|
+-->
+
 <script lang="ts">
     import Countrycard from "$lib/components/countrycard.svelte";
     import { onMount } from "svelte";
     import { SvelteDate } from "svelte/reactivity";
     const flaglist = [
+        //0
         "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg",
+        //1
         "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
+        //2
         "https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg",
+        //3
         "https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg",
+        //4
         "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_New_York_City.svg",
+        //5
         "https://upload.wikimedia.org/wikipedia/commons/8/85/Flag_of_Los_Angeles%2C_California.svg",
+        //6
         "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg",
+        //7
         "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+        //8
         "https://upload.wikimedia.org/wikipedia/commons/e/ef/Flag_of_Hawaii.svg",
+        //9
         "https://upload.wikimedia.org/wikipedia/commons/8/89/Bandera_de_Espa%C3%B1a.svg",
+        //10
+        "https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg",
     ];
     // https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    const UTC = "Etc/UTC";
     const timezonede = "Europe/Berlin";
     const timezonejp = "Asia/Tokyo";
     const timezoneca = "America/Toronto";
@@ -25,12 +49,24 @@
     const timezoneen = "Europe/London";
     const timezonehw = "Pacific/Honolulu";
     const timezonesp = "Europe/Madrid";
-    const options = {
+    const timezoneau = "Australia/Sydney";
+
+    const options_24h = {
         weekday: "short",
         hours: "2-digit",
         minutes: "2-digit",
         seconds: "2-digit",
     };
+    const options_ampm = {
+        weekday: "short",
+        hours: "hour12",
+        hourCycle: "h12",
+        minutes: "2-digit",
+        seconds: "2-digit",
+    };
+
+    let toggle_timeformat = $state(true);
+    let daylight_indicator = $state(true);
     let dsv = new SvelteDate();
     let de = $state("");
     let jp = $state("");
@@ -42,8 +78,10 @@
     let ch = $state("");
     let hw = $state("");
     let sp = $state("");
+    let utc = $state("");
+    let au = $state("");
 
-    function doeverything() {
+    function doeverything(options) {
         de = dsv.toLocaleTimeString(undefined, {
             timeZone: timezonede,
             ...options,
@@ -84,11 +122,23 @@
             timeZone: timezonesp,
             ...options,
         });
+        utc = dsv.toLocaleTimeString(undefined, {
+            timeZone: UTC,
+            ...options,
+        });
+        au = dsv.toLocaleTimeString(undefined, {
+            timeZone: timezoneau,
+            ...options,
+        });
     }
     onMount(() => {
         const interval = setInterval(() => {
             dsv.setTime(Date.now());
-            doeverything();
+            if (toggle_timeformat == true) {
+                doeverything(options_24h);
+            } else {
+                doeverything(options_ampm);
+            }
         }, 1000);
 
         return () => {
@@ -120,7 +170,7 @@
     <Countrycard
         name="canada"
         time={ca}
-        location="torronto, Canada"
+        location="Torronto, Canada"
         flag={flaglist[3]}
     />
     <Countrycard
@@ -148,7 +198,7 @@
         flag={flaglist[7]}
     />
     <Countrycard
-        name="china"
+        name="hawaii"
         time={hw}
         location="Honolulu, Hawaii"
         flag={flaglist[8]}
@@ -159,12 +209,35 @@
         location="Madrid, Spain"
         flag={flaglist[9]}
     />
+    <Countrycard
+        name="australia"
+        time={au}
+        location="Sydney, Australia"
+        flag={flaglist[10]}
+    />
 </main>
 <hr />
+<div class="flex justify-center">
+    <button
+        on:click={() => {
+            toggle_timeformat = !toggle_timeformat;
+        }}>Toggle AM/PM</button
+    ><!-- --
+    <button
+        on:click={() => {
+            daylight_indicator = !daylight_indicator;
+        }}
+    >
+        Toggle daylight indicator
+    </button>-->
+</div>
+<hr />
 <footer>
-    °°° <a href="https://hactuss.vercel.app">Made with fun by hactuss</a>
-    °°°
-    <a href="https://github.com/hactuss/officehaj">source code</a> °°°
+    <p>
+        °°° <a href="https://hactuss.vercel.app">Made with fun by hactuss</a>
+        °°°
+        <a href="https://github.com/hactuss/officehaj">source code</a> °°°
+    </p>
 </footer>
 
 <style>
@@ -188,12 +261,6 @@
         font-family: sans-serif;
         color: white;
     }
-    header {
-        margin-top: 2.5%;
-        display: flex;
-        justify-content: space-evenly;
-    }
-
     #MAIN {
         text-align: center;
         display: flex;
@@ -201,8 +268,6 @@
         justify-content: center;
     }
     footer {
-        position: sticky;
-        height: 25px;
         width: 100%;
         bottom: 0;
         padding-bottom: 1%;

@@ -25,16 +25,16 @@ a {
     color: wheat;
 }
 button {
-    font-size: 1.25rem;
-    padding: 5pt;
     transition: 10ms ease-in-out;
     border: solid transparent;
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 button:active {
     transition: 10ms ease-in-out;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 0.25);
 }
 iframe {
     margin: 50px;
@@ -70,7 +70,6 @@ nav {
 @media screen and (max-width: 500px) {
     #MAIN {
         flex-direction: column;
-        margin-top: 10%;
     }
     nav {
         text-align: center;
@@ -96,6 +95,22 @@ nav {
         padding: 2%;
         border: solid transparent;
         border-radius: 25px;
+        min-height: 11rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button {
+        height: 3rem;
+        width: 100%;
+    }
+    footer {
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /*border: solid red 1px;*/
     }
 }
 

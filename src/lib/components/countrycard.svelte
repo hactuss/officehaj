@@ -68,7 +68,14 @@
     </div>
     <p>{data.location}</p>
     <div>
-        <p>{data.time}</p>
+        <p>
+            <!-- --
+            <img
+                src="https://raw.githubusercontent.com/hackernoon/pixel-icon-library/refs/heads/main/icons/SVG/solid/sun-solid.svg"
+                alt="-"
+                class="DayIndicator"
+            />-->{data.time}
+        </p>
     </div>
 </div>
 
@@ -101,13 +108,12 @@
     }
     .DayIndicator {
         color: yellow;
+        width: 2rem;
     }
     .NightIndicator {
         color: lightblue;
     }
-    .User_indicator {
-        display: none;
-    }
+
     #settingsmenu {
         position: fixed;
         display: none;
