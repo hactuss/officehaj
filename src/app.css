@@ -2,6 +2,7 @@
 @plugin '@tailwindcss/typography';
 :root {
     background-repeat: no-repeat;
+    font-family: monospace;
 }
 /*
 * {
