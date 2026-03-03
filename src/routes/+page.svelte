@@ -36,6 +36,8 @@ ___  ___  ________  ________ _________  ___  ___  ________   ________
         "https://upload.wikimedia.org/wikipedia/commons/8/89/Bandera_de_Espa%C3%B1a.svg",
         //10
         "https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg",
+        //11
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flag_of_Estonia.svg/3840px-Flag_of_Estonia.svg.png",
     ];
     // https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     const UTC = "Etc/UTC";
@@ -50,6 +52,7 @@ ___  ___  ________  ________ _________  ___  ___  ________   ________
     const timezonehw = "Pacific/Honolulu";
     const timezonesp = "Europe/Madrid";
     const timezoneau = "Australia/Sydney";
+    const timezoneee = "Europe/Tallinn";
 
     const options_24h = {
         weekday: "short",
@@ -80,7 +83,7 @@ ___  ___  ________  ________ _________  ___  ___  ________   ________
     let sp = $state("");
     let utc = $state("");
     let au = $state("");
-
+    let ee = $state("");
     function doeverything(options) {
         de = dsv.toLocaleTimeString(undefined, {
             timeZone: timezonede,
@@ -128,6 +131,10 @@ ___  ___  ________  ________ _________  ___  ___  ________   ________
         });
         au = dsv.toLocaleTimeString(undefined, {
             timeZone: timezoneau,
+            ...options,
+        });
+        ee = dsv.toLocaleTimeString(undefined, {
+            timeZone: timezoneee,
             ...options,
         });
     }
@@ -214,6 +221,12 @@ ___  ___  ________  ________ _________  ___  ___  ________   ________
         time={au}
         location="Sydney, Australia"
         flag={flaglist[10]}
+    />
+    <Countrycard
+        name="estonia"
+        time={ee}
+        location="Tallinn, Estonia"
+        flag={flaglist[11]}
     />
 </main>
 <hr />
