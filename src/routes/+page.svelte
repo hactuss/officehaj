@@ -233,7 +233,13 @@ ___  ___  ________  ________ _________  ___  ___  ________   ________
 <div class="flex justify-center">
     <button
         on:click={() => {
-            doeverything(options_ampm);
+            if(toggle_timeformat == true){
+                doeverything(options_ampm);
+            }
+            else{
+                doeverything(options_24h);
+            }
+            
             toggle_timeformat = !toggle_timeformat;
         }}>Toggle AM/PM</button
     ><!-- --
