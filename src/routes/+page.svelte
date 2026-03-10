@@ -138,6 +138,7 @@ ___  ___  ________  ________ _________  ___  ___  ________   ________
             ...options,
         });
     }
+    doeverything(options_24h);
     onMount(() => {
         const interval = setInterval(() => {
             dsv.setTime(Date.now());
