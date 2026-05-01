@@ -138,7 +138,14 @@ ___  ___  ________  ________ _________  ___  ___  ________   ________
             ...options,
         });
     }
-    doeverything(options_24h);
+    const user_timezone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const ampm_checker = [timezoneny, timezoneca, timezoneau];
+    if (ampm_checker.includes(user_timezone)) {
+        doeverything(options_ampm);
+        toggle_timeformat = false;
+    } else {
+        doeverything(options_24h);
+    }
     onMount(() => {
         const interval = setInterval(() => {
             dsv.setTime(Date.now());
@@ -234,13 +241,12 @@ ___  ___  ________  ________ _________  ___  ___  ________   ________
 <div class="flex justify-center">
     <button
         on:click={() => {
-            if(toggle_timeformat == true){
+            if (toggle_timeformat == true) {
                 doeverything(options_ampm);
-            }
-            else{
+            } else {
                 doeverything(options_24h);
             }
-            
+
             toggle_timeformat = !toggle_timeformat;
         }}>Toggle AM/PM</button
     ><!-- --
